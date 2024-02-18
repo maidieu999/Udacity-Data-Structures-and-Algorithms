@@ -1,0 +1,19 @@
+
+Task0.py:
+This script has a time complexity of O(1) because accessing a record in an array takes O(1) time.
+
+Task1.py:
+This script has a time complexity of O(n) because it iterates over both the calls and texts lists once, resulting in a total of 2 * O(n) = O(n) complexity.
+
+Task2.py:
+This script also has a time complexity of O(n) because it iterates over the calls list once.
+
+Task3.py:
+The time complexity of Part A is O(n log n) because the most time-consuming operation is sorting the area codes. 
+The complexity of Part B is O(n) because it iterates through the bangalore_called_prefix list. 
+=> The overall complexity of the entire algorithm is determined by the sorting, resulting in O(n log n).
+
+Task4.py:
+The time complexity of this script is O(n) as it iterates through both the 'calls' and 'texts' data. 
+Sorting and printing the telemarketers add a complexity of O(n log n). 
+=> The overall time complexity for these scripts is primarily determined by the most time-consuming operations, which are iterating through the data (O(n)) and, in some cases, sorting the data (O(n log n)).
