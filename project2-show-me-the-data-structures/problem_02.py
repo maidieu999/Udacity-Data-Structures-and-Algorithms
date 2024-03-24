@@ -2,6 +2,10 @@
 import os
 
 def find_files(suffix, path):
+    if not os.path.exists(path):
+        print("Invalid path:", path)
+        return []
+
     file_list = os.listdir(path)
     file_paths = list()
 
@@ -34,5 +38,6 @@ print("Test Case 3 - should return [./analysis.txt]")
 print(case_3)
 
 # Test Case 3: Finding all .txt files in a non exist directory
-print("Test Case 4 - should return FileNotFoundError error")
+print("Test Case 4 - should return [] for invalid path")
 case_4 = find_files(".txt", "./nonexistdir")
+print(case_4)

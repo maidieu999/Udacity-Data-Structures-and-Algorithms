@@ -88,3 +88,42 @@ try:
     cache_03.set(1, 1)
 except ValueError as ve:
     print(ve)
+
+print("===== Test case #4 =====")
+print("Test case for getting the same value over and over again")
+cache_04 = LRU_Cache(3)
+cache_04.set(1, 1)
+cache_04.set(2, 2)
+cache_04.set(3, 3)
+for i in range(5):
+    print("Getting value for key 1:", cache_04.get(1))
+print("cache_04:", cache_04)
+
+print("===== Test case #5 =====")
+print("Test case for getting only invalid values")
+cache_05 = LRU_Cache(3)
+cache_05.set(1, 1)
+cache_05.set(2, 2)
+cache_05.set(3, 3)
+print("Getting value for key 5:", cache_05.get(5))
+print("cache_05:", cache_05)
+
+print("===== Test case #6 =====")
+print("Test case for negative capacity")
+try:
+    cache_06 = LRU_Cache(-5)
+    print("Capacity of cache is ", cache_06.capacity)
+
+    # Should raise an exception
+    cache_06.set(1, 1)
+except ValueError as ve:
+    print(ve)
+
+# Test case for high capacity
+print("===== Test case #7 =====")
+cache_07 = LRU_Cache(100)
+cache_07.set(1, 1)
+cache_07.set(2, 2)
+cache_07.set(3, 3)
+
+print("cache_07:", cache_07)

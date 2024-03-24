@@ -17,6 +17,9 @@ class Block:
         hash_str = f"{self.timestamp}-{self.data}-{self.previous_hash}".encode('utf-8')
         sha.update(hash_str)
         return sha.hexdigest()
+    
+    def __str__(self):
+        return (f'Time: {self.timestamp}, Data: {self.data}, SHA256 Hash: {self.hash}, Previous Hash: {self.previous_hash}')
 
 class BlockNode:
     def __init__(self, block):
@@ -27,10 +30,10 @@ class BlockChain:
     def __init__(self):
         self._head = None
         self._tail = None
+        self._previous_hash = "0" * 64
 
     def append(self, data):
-        previous_hash = self._get_previous_hash()
-        new_block = Block(datetime.now(), data, previous_hash)
+        new_block = Block(datetime.now(), data, self._previous_hash)
         new_node = BlockNode(new_block)
 
         if self._head is None:
@@ -40,10 +43,7 @@ class BlockChain:
             self._tail.next = new_node
             self._tail = new_node
 
-    def _get_previous_hash(self):
-        if self._tail is None:
-            return "0" * 64
-        return self._tail.block.hash
+        self._previous_hash = new_block.hash
 
     @staticmethod
     def _format_time(timestamp):
@@ -70,4 +70,3 @@ blockchain.append("D")
 
 print("Test Case 1 - should print 4 blocks A, B, C, D")
 print(blockchain)
-

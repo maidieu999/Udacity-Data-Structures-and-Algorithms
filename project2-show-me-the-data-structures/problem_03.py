@@ -45,17 +45,32 @@ def huffman_encoding(text):
     return huffman_code, huffman_dict
 
 def huffman_decoding(huffman_code, huffman_dict):
+    # Check for empty input strings or invalid inputs
+    if not huffman_code or not huffman_dict:
+        print("Error: Invalid input")
+        return ""
+
+    reversed_dict = {v: k for k, v in huffman_dict.items()}
+
     result = ''
     current_pos = 0
     while current_pos < len(huffman_code):
-        for char, char_code in huffman_dict.items():
-            if huffman_code.startswith(char_code, current_pos):
-                result += char
-                current_pos += len(char_code)
+        found_match = False
+        for code in reversed_dict:
+            if huffman_code.startswith(code, current_pos):
+                result += reversed_dict[code]
+                current_pos += len(code)
+                found_match = True
                 break
+        if not found_match:
+            print("Error: Huffman code not found in the dictionary")
+            return ""
     return result
 
 def test(data):
+    if type(data) != str:
+        data = str(data)
+        
     if len(data) == 0:
         print("Data is empty. No need to encode or decode.")
         return
@@ -82,3 +97,6 @@ if __name__ == "__main__":
     test("12345")
     test("ABCDE")
     test("This is probelem 3 of project 2.")
+    test("AAAAAAA")
+    test("")
+    test(101010101)

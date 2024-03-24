@@ -44,6 +44,9 @@ class LinkedList:
         return size
 
 def union(list_1, list_2):
+    if list_1.size() == 0 and list_2.size() == 0:
+        return None
+
     if list_1.size() == 0:
         return list_2
     
@@ -75,26 +78,23 @@ def intersection(llist_1, llist_2):
     if llist_1.size() == 0 or llist_2.size() == 0:
         return 
 
-    # Create a set to store values of the second list
-    temp_values = set()
-    result_set = set()
     result_list = LinkedList()
+    seen_values = set()
 
-    # Iterate over the nodes of the second list to populate the set
-    current_node = llist_2.head
-    while current_node:
-        temp_values.add(current_node.value)
-        current_node = current_node.next
-
-    # Iterate over the nodes of the first list to find intersections
+    # Iterate over the nodes of the first list
     current_node = llist_1.head
     while current_node:
-        if current_node.value in temp_values:
-            result_set.add(current_node.value)
+        if current_node.value not in seen_values:
+            seen_values.add(current_node.value)
         current_node = current_node.next
 
-    for value in result_set:
-        result_list.append(value)
+    # Iterate over the nodes of the second list and check for intersections
+    current_node = llist_2.head
+    while current_node:
+        if current_node.value in seen_values:
+            result_list.append(current_node.value)
+            seen_values.remove(current_node.value)  # Remove duplicates
+        current_node = current_node.next
 
     return result_list
 
@@ -156,3 +156,13 @@ print (union(linked_list_5,linked_list_6))
 print("Should return none")
 print (intersection(linked_list_5,linked_list_6))
 
+# Test case 4
+print("Test case 4")
+linked_list_5 = LinkedList()
+linked_list_6 = LinkedList()
+
+print("Should return none")
+print (union(linked_list_5,linked_list_6))
+
+print("Should return none")
+print (intersection(linked_list_5,linked_list_6))
