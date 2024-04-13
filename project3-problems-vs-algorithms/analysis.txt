@@ -1,0 +1,92 @@
+## Problem 1
+
+Solution Logic:
+The function checks if the input number is negative. If it is negative, a ValueError is raised since the square root is not defined for negative numbers.
+It handles special cases where the input number is 0 or 1 by returning the number itself. This is because the square root of 0 or 1 is the number itself.
+Binary Search Approach: For numbers greater than 1, the function utilizes a binary search approach to find the floored square root
+
+
+Solution Time Complexity - O(log n):
+Inside the loop, there are constant-time operations such as arithmetic operations and comparisons
+In each iteration of the while loop, the range of search is halved.
+The time complexity of the binary search algorithm is O(log n), where n is the given number.
+Therefore, the time complexity of the sqrt function is O(log n)
+
+## Problem 2
+
+Solution Logic:
+This solution employs a binary search algorithm to find the index of a target number within a rotated sorted array. 
+It checks which half of the array is sorted by comparing the start and middle elements. 
+Depending on whether the target falls within the sorted half, it adjusts the search range accordingly, allowing for accurate identification of the target index.
+
+Solution Time Complexity - O(log n):
+Inside the loop, there are constant-time operations such as arithmetic operations and comparisons
+In each iteration of the while loop, the range of search is halved.
+The time complexity of the binary search algorithm is O(log n), where n is the given number.
+Therefore, the time complexity of the sqrt function is O(log n)
+
+## Problem 3
+
+Solution Logic:
+Using the merge sort algorithm to sort the input array in increasing order.
+Then, it iterates through the sorted array to construct two numbers, ensuring that they are formed by alternating digits for maximum sum
+
+Solution Time Complexity - O(n log n)
+Merge Sort Time Complexity: The merge sort algorithm used here has a time complexity of O(n log n) in all cases (best, average, and worst-case scenarios). This is because it consistently divides the array into halves until each subarray contains only one element, and then merges these subarrays in a manner that takes linear time proportional to the size of the input.
+Construction of Numbers: After sorting the array, constructing the two numbers involves a single traversal through the sorted array. This process takes linear time, O(n), where n is the number of elements in the input list.
+the overall time complexity of the solution is dominated by the time complexity of merge sort, which is O(n log n) in the worst-case scenario.
+
+## Problem 4
+
+Solution Logic:
+This solution utilizes the Dutch National Flag algorithm to sort the array in a single traversal. It maintains three pointers: low, mid, and high, representing the positions for elements less than 0, elements equal to 1, and elements greater than 2, respectively. By iterating through the array and swapping elements based on their values, it partitions the array into three sections, effectively sorting it in linear time complexity.
+
+Solution Time Complexity - O(n)
+The algorithm iterates through the input list once.
+Inside the loop, it performs constant-time operations such as comparisons and swaps.
+Each element is processed exactly once, and the algorithm completes in a single traversal of the input list, regardless of its size.
+Therefore, the time complexity is linear, O(n), making it efficient for sorting arrays of 0s, 1s, and 2s.
+
+
+## Problem 5
+
+Solution logic:
+The provided Python code defines a Trie data structure consisting of TrieNode and Trie classes. 
+TrieNode represents a single node in the Trie, containing children nodes and a flag indicating if it's the end of a word. 
+Trie class represents the Trie itself, with functions for insertion, finding nodes based on prefixes, and collecting suffixes. 
+The insert function adds a word to the Trie by traversing through each character and creating corresponding nodes as necessary. 
+The find function locates the Trie node representing a given prefix by traversing through the Trie. 
+The suffixes function recursively collects suffixes for all complete words below a given node, generating a list of suffixes for a given suffix string.
+
+Solution Time Complexity:
+The time complexity of operations in a Trie depends on the length of the input strings and the structure of the Trie. 
+For insertion, the time complexity is O(n), where n is the length of the word being inserted, as we need to traverse through each character of the word. 
+For searching a prefix, the time complexity is also O(n), where n is the length of the prefix, as we traverse the Trie based on the characters in the prefix. 
+Finding all suffixes below a given node has a time complexity of O(m), where m is the total number of characters in all the suffixes, as it involves traversing through all the suffixes. 
+
+
+## Problem 6
+
+Solution Logic:
+This function iterates through the list once, updating the minimum and maximum values as it encounters smaller or larger elements, respectively
+
+Solution Time Complexity - O(n):
+By visiting each element only once, it achieves a time complexity of O(n), where n is the length of the input list.
+
+
+## Problem 7
+
+Solution Logic:
+This solution implements a routing mechanism using a Trie data structure.
+The RouteTrieNode class represents a single node in the Trie, containing children nodes and a handler for the end of a path.
+The RouteTrie class stores routes and their associated handlers, with methods for insertion and finding handlers based on paths.
+When inserting a path into the trie, each segment of the path is added as a node, with the final node holding the associated handler.
+The Router class manages the routing process, utilizing a RouteTrie instance to handle route additions and lookups.
+Overall, this solution efficiently maps paths to their corresponding handlers, providing a flexible and scalable routing system for web applications.
+
+Solution Time Complexity:
+For the insert operation, the time complexity is O(n), where n is the length of the path being inserted. This is because we traverse the trie by iterating through each part of the path.
+For the find operation, the time complexity is also O(n), where n is the length of the path being searched. Again, this involves traversing the trie based on the characters in the path.
+The split_path function, used internally to split a path into its individual parts, has a time complexity of O(n), where n is the length of the path. This is because we perform string manipulation operations such as stripping and splitting.
+The overall time complexity of the lookup function is also O(n), where n is the length of the path. This is because it involves calling the find method, which has a linear time complexity.
+In summary, the time complexity of the solution is primarily linear with respect to the length of the input path, making it efficient for handling routes and looking up associated handlers in a trie-based data structure.
