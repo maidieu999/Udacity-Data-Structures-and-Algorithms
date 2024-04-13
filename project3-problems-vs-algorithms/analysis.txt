@@ -12,6 +12,9 @@ In each iteration of the while loop, the range of search is halved.
 The time complexity of the binary search algorithm is O(log n), where n is the given number.
 Therefore, the time complexity of the sqrt function is O(log n)
 
+Solution Space Complexity - O(1)
+Local variables: The local variables start, end contribute O(1) space complexity.
+
 ## Problem 2
 
 Solution Logic:
@@ -25,6 +28,10 @@ In each iteration of the while loop, the range of search is halved.
 The time complexity of the binary search algorithm is O(log n), where n is the given number.
 Therefore, the time complexity of the sqrt function is O(log n)
 
+Solution Space Complexity - O(1)
+Variables: The variables length, start, and end contribute O(1) space complexity.
+Loop Variable: The loop variable mid is calculated within the loop and updated in each iteration. However, it does not create new memory allocations but rather reuses the same memory location. Therefore, it also contributes O(1) space complexity.
+
 ## Problem 3
 
 Solution Logic:
@@ -35,6 +42,11 @@ Solution Time Complexity - O(n log n)
 Merge Sort Time Complexity: The merge sort algorithm used here has a time complexity of O(n log n) in all cases (best, average, and worst-case scenarios). This is because it consistently divides the array into halves until each subarray contains only one element, and then merges these subarrays in a manner that takes linear time proportional to the size of the input.
 Construction of Numbers: After sorting the array, constructing the two numbers involves a single traversal through the sorted array. This process takes linear time, O(n), where n is the number of elements in the input list.
 the overall time complexity of the solution is dominated by the time complexity of merge sort, which is O(n log n) in the worst-case scenario.
+
+Solutution Space Complexity
+Input: The input list input_list occupies space proportional to the size of the input list. it doesn't contribute to the space complexity of the function itself because it's passed as an argument.
+Local variables: The local variables sorted_arr, num1, num2, start, mid, left_half, right_half, left_index, right_index, result, and any temporary variables used for calculations occupy space that is proportional to the size of the input list. However, since they are all used within the function and don't scale with the input size beyond a constant factor, they contribute O(N) space complexity, where N is the size of the input list.
+Recursion: The merge sort algorithm used in the merge_sort function is recursive. Each recursive call adds a new frame to the call stack, which consumes additional space. The space complexity of merge sort is O(NlogN) due to the recursive calls.
 
 ## Problem 4
 
@@ -47,6 +59,8 @@ Inside the loop, it performs constant-time operations such as comparisons and sw
 Each element is processed exactly once, and the algorithm completes in a single traversal of the input list, regardless of its size.
 Therefore, the time complexity is linear, O(n), making it efficient for sorting arrays of 0s, 1s, and 2s.
 
+Solution Space Complexity - O(1)
+Variables low, mid, and high: These variables are integer pointers used to track the positions of elements within the input list. They occupy constant space regardless of the size of the input list. Therefore, they contribute O(1) space complexity.
 
 ## Problem 5
 
@@ -65,6 +79,10 @@ For searching a prefix, the time complexity is also O(n), where n is the length 
 Finding all suffixes below a given node has a time complexity of O(m), where m is the total number of characters in all the suffixes, as it involves traversing through all the suffixes. 
 
 
+Solution Space Complexity - O(m)
+TrieNode: isEndOfWord occupies constant space, O(1), for each node. The dominant factor in the space complexity of the TrieNode class is the space occupied by the children dictionary, which grows with the number of unique characters encountered in the input words. Therefore, the space complexity of the TrieNode class is O(m), where m is the number of unique characters.
+Trie: The root attribute of the Trie class is an instance of the TrieNode class, representing the root node of the trie. It occupies constant space, O(1), regardless of the size of the trie.
+
 ## Problem 6
 
 Solution Logic:
@@ -73,6 +91,8 @@ This function iterates through the list once, updating the minimum and maximum v
 Solution Time Complexity - O(n):
 By visiting each element only once, it achieves a time complexity of O(n), where n is the length of the input list.
 
+Solution Space Complexity - O(1)
+Local variables: The local variables min, max contribute O(1) space complexity.
 
 ## Problem 7
 
@@ -90,3 +110,6 @@ For the find operation, the time complexity is also O(n), where n is the length 
 The split_path function, used internally to split a path into its individual parts, has a time complexity of O(n), where n is the length of the path. This is because we perform string manipulation operations such as stripping and splitting.
 The overall time complexity of the lookup function is also O(n), where n is the length of the path. This is because it involves calling the find method, which has a linear time complexity.
 In summary, the time complexity of the solution is primarily linear with respect to the length of the input path, making it efficient for handling routes and looking up associated handlers in a trie-based data structure.
+
+Solution Sapce Complexity - O(m)
+The dominant factor in the space complexity of the this solution is the space occupied by the children dictionary in RouteTrieNode, which grows with the number of unique characters encountered in the input words. Therefore, the space complexity is O(m), where m is the number of unique characters.
