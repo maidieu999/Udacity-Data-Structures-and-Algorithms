@@ -70,3 +70,4 @@ print(router.lookup("/"))  # should print 'root handler'
 print(router.lookup("/blog"))  # should print 'blog handler'
 print(router.lookup("/blog/article1"))  # should print 'article1 handler'
 print(router.lookup("/blog/article2"))  # should print 'not found handler'
+print(router.lookup("")) # should print root handler

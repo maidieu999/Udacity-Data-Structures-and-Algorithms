@@ -35,6 +35,12 @@ print ("Pass" if  (4 == sqrt(16)) else "Fail")
 print ("Pass" if  (1 == sqrt(1)) else "Fail")
 print ("Pass" if  (5 == sqrt(27)) else "Fail")
 
+large_number = 10**12
+print("Pass" if sqrt(large_number) == int(large_number**0.5) else "Fail")
+
+# Test case where the input number is 0
+print("Pass" if sqrt(0) == 0 else "Fail")
+
 # Input Validation: Negative Number
 try:
     sqrt(-1)

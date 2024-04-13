@@ -51,8 +51,26 @@ def test_function(test_case):
     else:
         print("Fail")
 
+# Test case where the target number is not present in the array
+test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 5])
+
+# Test case where the array is empty
+test_function([[], 10])
+
+# Test case where the target number is larger than any element in the array
+test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 11])
+
+# Test case where the target number is smaller than any element in the array
+test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 0])
+
+# Test case where the target number is present at the beginning of the array
 test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])
-test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
-test_function([[6, 7, 8, 1, 2, 3, 4], 8])
-test_function([[6, 7, 8, 1, 2, 3, 4], 1])
-test_function([[6, 7, 8, 1, 2, 3, 4], 10])
+
+# Test case where the target number is present at the end of the array
+test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 4])
+
+# Test case where the array contains only one element and it matches the target number
+test_function([[6], 6])
+
+# Test case where the array contains only one element and it doesn't match the target number
+test_function([[6], 7])

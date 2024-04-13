@@ -118,22 +118,42 @@ for word in wordList:
 # In[5]:
 
 
-from ipywidgets import widgets
-from IPython.display import display
-from ipywidgets import interact
-def f(prefix):
-    if prefix != '':
-        prefixNode = MyTrie.find(prefix)
-        if prefixNode:
-            print('\n'.join(prefixNode.suffixes()))
-        else:
-            print(prefix + " not found")
+# from ipywidgets import widgets
+# from IPython.display import display
+# from ipywidgets import interact
+# def f(prefix):
+#     if prefix != '':
+#         prefixNode = MyTrie.find(prefix)
+#         if prefixNode:
+#             print('\n'.join(prefixNode.suffixes()))
+#         else:
+#             print(prefix + " not found")
+#     else:
+#         print('')
+# interact(f,prefix='');
+
+
+# In[6]:
+def test_suffixes(suffix, expected_result):
+    node = MyTrie.find(suffix)
+    result = node.suffixes() if node else None
+    if result == expected_result:
+        print("Pass")
     else:
-        print('')
-interact(f,prefix='');
+        print("Fail")
 
+# Test case: return all words when empty suffix
+test_suffixes("", wordList)
 
-# In[ ]:
+# Test case: returns y when suffix trigonometr
+test_suffixes("trigonometr", ["y"])
+
+# Test case: returns ['hology', 'agonist', 'onym'] when suffix ant
+test_suffixes("ant", ['hology', 'agonist', 'onym'])
+
+# Test case: node not found when suffix doesn't match
+test_suffixes("trololo", None)
+
 
 
 

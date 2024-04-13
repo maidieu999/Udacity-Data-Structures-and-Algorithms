@@ -64,3 +64,21 @@ def test_function(test_case):
 test_function([[1, 2, 3, 4, 5], [542, 31]])
 test_function([[4, 6, 2, 5, 9, 8], [964, 852]])
 test_function([[1, 2], [1, 2]])
+
+# Test case where the input list is empty
+test_function([[], [0, 0]])
+
+# Test case where the input list contains only one element
+test_function([[9], [9, 0]])
+
+# Test case where the input list contains duplicate elements
+test_function([[4, 4, 4, 4], [44, 44]])
+
+# Test case where the input list contains negative numbers
+test_function([[-1, -2, -3, -4, -5], [-23, -145]]) 
+
+# Test case where the input list contains large numbers
+test_function([[9999, 999, 99, 9], [9999, 999]])
+
+# Test case where the input list contains all zeros
+test_function([[0, 0, 0, 0], [0, 0]])
