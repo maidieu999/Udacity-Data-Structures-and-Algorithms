@@ -43,10 +43,19 @@ Merge Sort Time Complexity: The merge sort algorithm used here has a time comple
 Construction of Numbers: After sorting the array, constructing the two numbers involves a single traversal through the sorted array. This process takes linear time, O(n), where n is the number of elements in the input list.
 the overall time complexity of the solution is dominated by the time complexity of merge sort, which is O(n log n) in the worst-case scenario.
 
-Solutution Space Complexity
-Input: The input list input_list occupies space proportional to the size of the input list. it doesn't contribute to the space complexity of the function itself because it's passed as an argument.
-Local variables: The local variables sorted_arr, num1, num2, start, mid, left_half, right_half, left_index, right_index, result, and any temporary variables used for calculations occupy space that is proportional to the size of the input list. However, since they are all used within the function and don't scale with the input size beyond a constant factor, they contribute O(N) space complexity, where N is the size of the input list.
-Recursion: The merge sort algorithm used in the merge_sort function is recursive. Each recursive call adds a new frame to the call stack, which consumes additional space. The space complexity of merge sort is O(NlogN) due to the recursive calls.
+Solutution Space Complexity:  O(log n)
+merge_sort function: recursively divides the input list into halves until the base case. At each recursive call, the function creates new lists to store the left and right halves.
+Therefore, the space complexity of the merge_sort function is O(log n), where n is the size of the input list.
+
+merge function: creates a new list (result) to store the merged result.
+However, the size of the result list is not larger than the sum of the sizes of the input lists (left and right).
+Therefore, the space complexity of the merge function is O(n), where n is the total size of the input lists (left + right).
+
+rearrange_digits function:
+The rearrange_digits function first calls the merge_sort function, which contributes O(log n) space complexity.
+It then initializes two variables (num1 and num2) to store the two maximum sums, which occupy constant space.
+The function also creates a new list (sorted_arr) to store the sorted version of the input list, which contributes O(n) space complexity.
+Therefore, the overall space complexity of the rearrange_digits function is dominated by the space complexity of the merge_sort function, which is O(log n).
 
 ## Problem 4
 
@@ -79,9 +88,19 @@ For searching a prefix, the time complexity is also O(n), where n is the length 
 Finding all suffixes below a given node has a time complexity of O(m), where m is the total number of characters in all the suffixes, as it involves traversing through all the suffixes. 
 
 
-Solution Space Complexity - O(m)
-TrieNode: isEndOfWord occupies constant space, O(1), for each node. The dominant factor in the space complexity of the TrieNode class is the space occupied by the children dictionary, which grows with the number of unique characters encountered in the input words. Therefore, the space complexity of the TrieNode class is O(m), where m is the number of unique characters.
+Solution Space Complexity
+TrieNode: 
+__init__: isEndOfWord occupies constant space, O(1), for each node. 
+insert: depends on the number of unique characters in the input (or the number of child nodes created) => O(n), where n is the number of characters in the input
+The dominant factor in the space complexity of the TrieNode class is the space occupied by the children dictionary, which grows with the number of unique characters encountered in the input words. Therefore, the space complexity of the TrieNode class is O(m), where m is the number of unique characters.
+suffixes: determined by the number of complete words and the average length of their suffixes. If the trie is balanced and contains m complete words with an average suffix length of k characters, the space complexity is approximately O(m * k), accounting for both the space used by the list of collected suffixes and the call stack during recursive calls.
+Overall, the space complexity of the TrieNode class depends on the number of child nodes stored in each node, the number of complete words in the trie, and the length of their suffixes
+
 Trie: The root attribute of the Trie class is an instance of the TrieNode class, representing the root node of the trie. It occupies constant space, O(1), regardless of the size of the trie.
+__init_: a single instance variable (self.root) is initialized to store the root node of the trie. This variable occupies constant space => is O(1)
+insert: creates new nodes in the trie for each character of the input word, resulting in a space complexity of O(n), where n is the length of the input word. 
+find: traverses the trie from the root to find the node representing the given prefix, resulting in a space complexity of O(m), where m is the length of the input prefix being searched.
+the overall space complexity of the Trie class, considering both the Trie nodes and the input words or prefixes, would be O(N), where N is the total number of characters in all words or prefixes processed by the Trie.
 
 ## Problem 6
 
@@ -112,4 +131,8 @@ The overall time complexity of the lookup function is also O(n), where n is the 
 In summary, the time complexity of the solution is primarily linear with respect to the length of the input path, making it efficient for handling routes and looking up associated handlers in a trie-based data structure.
 
 Solution Sapce Complexity - O(m)
-The dominant factor in the space complexity of the this solution is the space occupied by the children dictionary in RouteTrieNode, which grows with the number of unique characters encountered in the input words. Therefore, the space complexity is O(m), where m is the number of unique characters.
+RouteTrieNode: O(1) for the constant space to persist children and handler
+RouteTrie: does not store additional data beyond the root node. The primary space usage comes from the root node and its children. The space complexity for storing paths and handlers in the trie depends on the total number of nodes created, which in turn depends on the number of unique path segments (parts) inserted into the trie.
+If there are n unique path segments, each represented by a separate node in the trie, the space complexity for the RouteTrie class would be O(n).
+Router: does not store additional data beyond the RouteTrie instance and the not_found_handler attribute.
+The dominant factor in the space complexity of the this solution is the space occupied by the children dictionary in RouteTrieNode, which grows with the number of unique characters encountered in the input words. Therefore, the space complexity is O(n), where n is the number of unique characters.
