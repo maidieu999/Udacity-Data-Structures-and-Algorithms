@@ -1,4 +1,4 @@
-from math import sqrt, pow
+from math import sqrt
 
 def heuristic_distance(origin, destination):
     x_distance = origin[0] - destination[0]
@@ -33,8 +33,11 @@ def shortest_path(M,start,goal):
         closed_set.add(current)
 
         for neighbor in M.roads[current]:
+            # Ignore neighbors already evaluated
             if neighbor in closed_set:
                 continue
+
+            # Calculate the distance from start to neighbor through current
             tentative_g = g_scores[current] + heuristic_distance(M.intersections[current], M.intersections[neighbor])
 
             if neighbor not in open_set or tentative_g < g_scores[neighbor]:
