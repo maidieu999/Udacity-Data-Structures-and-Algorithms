@@ -44,18 +44,9 @@ Construction of Numbers: After sorting the array, constructing the two numbers i
 the overall time complexity of the solution is dominated by the time complexity of merge sort, which is O(n log n) in the worst-case scenario.
 
 Solutution Space Complexity:  O(log n)
-merge_sort function: recursively divides the input list into halves until the base case. At each recursive call, the function creates new lists to store the left and right halves.
-Therefore, the space complexity of the merge_sort function is O(log n), where n is the size of the input list.
-
-merge function: creates a new list (result) to store the merged result.
-However, the size of the result list is not larger than the sum of the sizes of the input lists (left and right).
-Therefore, the space complexity of the merge function is O(n), where n is the total size of the input lists (left + right).
-
-rearrange_digits function:
-The rearrange_digits function first calls the merge_sort function, which contributes O(log n) space complexity.
-It then initializes two variables (num1 and num2) to store the two maximum sums, which occupy constant space.
-The function also creates a new list (sorted_arr) to store the sorted version of the input list, which contributes O(n) space complexity.
-Therefore, the overall space complexity of the rearrange_digits function is dominated by the space complexity of the merge_sort function, which is O(log n).
+merge_sort:  O(n log n) where n is the number of elements in the input array arr. This complexity arises due to the recursive calls that split the array and the temporary memory space required for each level of the recursion, including the merging of sorted subarrays.
+merge: O(n) where n is the combined total number of elements in the left and right arrays. This complexity arises from the creation of the result array to store the merged elements and the additional space used for the merging process without any recursive calls or additional data structures.
+rearrange_digits: O(n) where n is the length of the input list input_list. This complexity arises due to the merge_sort function's space requirements and the additional space used within the function for storing the sorted array sorted_arr, the integers num1 and num2, and intermediate values during the rearrangement process.
 
 ## Problem 4
 
@@ -82,11 +73,13 @@ The find function locates the Trie node representing a given prefix by traversin
 The suffixes function recursively collects suffixes for all complete words below a given node, generating a list of suffixes for a given suffix string.
 
 Solution Time Complexity:
-The time complexity of operations in a Trie depends on the length of the input strings and the structure of the Trie. 
-For insertion, the time complexity is O(n), where n is the length of the word being inserted, as we need to traverse through each character of the word. 
-For searching a prefix, the time complexity is also O(n), where n is the length of the prefix, as we traverse the Trie based on the characters in the prefix. 
-Finding all suffixes below a given node has a time complexity of O(m), where m is the total number of characters in all the suffixes, as it involves traversing through all the suffixes. 
+TrieNode:
+insert: depends on the number of unique characters in the input (or the number of child nodes created) => O(n) per word
+suffixes: Considering the recursion and traversing all complete words with different suffixes, the worst-case time complexity for the suffixes method could be O(m * k). m is the number of nodes in the Trie and k as the number of characters in a complete word (complete word count)
 
+Trie:
+insert: the time complexity is dependent on the length of the word being inserted => O(n)
+find: the time complexity is determined by the length of the prefix => O(m), where m is the length of the prefix being searched
 
 Solution Space Complexity
 TrieNode: 
@@ -124,11 +117,14 @@ The Router class manages the routing process, utilizing a RouteTrie instance to 
 Overall, this solution efficiently maps paths to their corresponding handlers, providing a flexible and scalable routing system for web applications.
 
 Solution Time Complexity:
-For the insert operation, the time complexity is O(n), where n is the length of the path being inserted. This is because we traverse the trie by iterating through each part of the path.
-For the find operation, the time complexity is also O(n), where n is the length of the path being searched. Again, this involves traversing the trie based on the characters in the path.
-The split_path function, used internally to split a path into its individual parts, has a time complexity of O(n), where n is the length of the path. This is because we perform string manipulation operations such as stripping and splitting.
-The overall time complexity of the lookup function is also O(n), where n is the length of the path. This is because it involves calling the find method, which has a linear time complexity.
-In summary, the time complexity of the solution is primarily linear with respect to the length of the input path, making it efficient for handling routes and looking up associated handlers in a trie-based data structure.
+RouteTrie:
+insert: the time complexity is O(n), where n is the length of the path being inserted. This is because we traverse the trie by iterating through each part of the path.
+find: the time complexity is also O(n), where n is the length of the path being searched. Again, this involves traversing the trie based on the characters in the path.
+_split_path: used internally to split a path into its individual parts, has a time complexity of O(n), where n is the length of the path. This is because we perform string manipulation operations such as stripping and splitting.
+
+Router:
+add_handler: the time complexity of the add_handler operation is O(n) for inserting a handler for a path of length n.
+lookup: In the worst-case scenario, where the path is not found in the Route Trie, the time complexity is O(m), where m is the length of the path being searched.
 
 Solution Sapce Complexity - O(m)
 RouteTrieNode: O(1) for the constant space to persist children and handler
